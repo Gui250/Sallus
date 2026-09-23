@@ -120,6 +120,11 @@
 
   <!-- HERO -->
   <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero__media" aria-hidden="true">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/video/salus-hero-poster.webp">
+        <source src="assets/video/salus-hero.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="container hero__grid">
       <div class="hero__content">
         <p class="eyebrow">Plano de saúde da advocacia sergipana</p>
@@ -130,28 +135,35 @@
           <a class="btn btn--outline" href="#planos">Conhecer Planos</a>
         </div>
         <div class="hero__since">
-          <span class="hero__since-number" data-count-to="48" aria-hidden="true">0</span>
+          <span class="hero__since-number" data-count-to="48" aria-hidden="true">48</span>
           <p>anos da ASSEC Saúde cuidando da advocacia sergipana<span class="visually-hidden">: 48 anos</span></p>
         </div>
       </div>
 
-      <div class="hero__visual" id="proposta" data-tilt-stage>
+    </div>
+  </section>
+
+  <!-- CARTEIRA -->
+  <section class="section carteira fade-in" id="carteira" aria-labelledby="carteira-title">
+    <div class="container carteira__grid">
+      <div class="carteira__content">
+        <p class="eyebrow">Carteira Salús</p>
+        <h2 id="carteira-title">Dois cartões. <em>Uma família inteira</em> protegida.</h2>
+        <p class="lede">Escolha a acomodação e leve todo mundo junto. Os dois planos usam a rede ASSEC com mais de 5 mil prestadores e o acesso nacional via CAMED.</p>
+        <ul class="carteira__list">
+          <li><strong>Salús Plus</strong> Quarto privativo em apartamento, para internar com conforto e ter a família ao lado.</li>
+          <li><strong>Salús Essencial</strong> Cobertura hospitalar e ambulatorial completa em enfermaria, com o melhor custo.</li>
+        </ul>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#proposta">Quero minha carteira Salús</a>
+          <a class="btn btn--outline" href="#planos">Comparar planos</a>
+        </div>
+      </div>
+
+      <div class="carteira__visual" data-tilt-stage>
         <div class="coverage-stack" aria-hidden="true">
           <div class="benefit-wallet">
             <div class="benefit-wallet__back"></div>
-
-            <div class="benefit-card benefit-card--camed">
-              <div class="benefit-card__inner">
-                <div class="benefit-card__top">
-                  <span>CAMED</span>
-                  <span class="benefit-card__partner">Rede parceira</span>
-                </div>
-                <div class="benefit-card__bottom">
-                  <span>Rede nacional</span>
-                  <strong>5 mil+ prestadores</strong>
-                </div>
-              </div>
-            </div>
 
             <div class="benefit-card benefit-card--plus">
               <div class="benefit-card__inner">
@@ -201,56 +213,6 @@
           </div>
         </div>
 
-        <form class="proposal-card" id="contact-form" method="post" action="#contato" novalidate aria-labelledby="proposta-title">
-          <div class="proposal-card__head">
-            <h2 id="proposta-title" tabindex="-1">Encontre seu plano,</h2>
-            <p>leva 20 segundos e continua no WhatsApp.</p>
-          </div>
-
-          <fieldset class="audience-picker">
-            <legend>Qual plano te interessa?</legend>
-            <label>
-              <input type="radio" name="your-plan" value="Salús Plus" checked>
-              <span>Salús Plus <small>Apartamento</small></span>
-            </label>
-            <label>
-              <input type="radio" name="your-plan" value="Salús Essencial">
-              <span>Salús Essencial <small>Enfermaria</small></span>
-            </label>
-            <label>
-              <input type="radio" name="your-plan" value="Ainda não sei">
-              <span>Ainda não sei <small>Quero ajuda</small></span>
-            </label>
-          </fieldset>
-
-          <div class="form-separator" aria-hidden="true">
-            <div></div>
-            <span>Seus dados</span>
-            <div></div>
-          </div>
-
-          <div class="field">
-            <label for="your-name">Nome</label>
-            <input type="text" id="your-name" name="your-name" autocomplete="name" placeholder="Como podemos chamar você?" required minlength="3" aria-describedby="your-name-error" aria-invalid="false">
-            <p class="field-error" id="your-name-error"></p>
-          </div>
-
-          <div class="field">
-            <label for="your-tel">Telefone com WhatsApp</label>
-            <input type="tel" id="your-tel" name="your-tel" autocomplete="tel" inputmode="tel" placeholder="(79) 99999-9999" required minlength="14" aria-describedby="your-tel-error" aria-invalid="false">
-            <p class="field-error" id="your-tel-error"></p>
-          </div>
-
-          <button type="submit" class="proposal-card__submit">
-            Continuar no WhatsApp
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
-          </button>
-          <p class="proposal-card__privacy">Atendimento de segunda a sexta, das 7h às 13h. Usamos seus dados apenas para esta solicitação.</p>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          <noscript>
-            <p class="form-status">Para solicitar sem JavaScript, ligue para <a href="tel:+5579988295335">(79) 98829-5335</a>.</p>
-          </noscript>
-        </form>
       </div>
     </div>
   </section>
@@ -518,11 +480,58 @@
         </dl>
       </div>
 
-      <aside class="contact-promise" aria-label="Solicitar uma proposta Salús">
-        <img src="assets/img/salus-icone-verde.png" alt="" width="27" height="23">
-        <p>Seu plano começa com uma conversa com quem conhece a advocacia sergipana.</p>
-        <a class="btn btn--outline" href="#proposta">Solicitar uma proposta</a>
-      </aside>
+      <div class="contact-form" id="proposta">
+        <form class="proposal-card" id="contact-form" method="post" action="#contato" novalidate aria-labelledby="proposta-title">
+          <div class="proposal-card__head">
+            <h2 id="proposta-title" tabindex="-1">Encontre seu plano,</h2>
+            <p>leva 20 segundos e continua no WhatsApp.</p>
+          </div>
+
+          <fieldset class="audience-picker">
+            <legend>Qual plano te interessa?</legend>
+            <label>
+              <input type="radio" name="your-plan" value="Salús Plus" checked>
+              <span>Salús Plus <small>Apartamento</small></span>
+            </label>
+            <label>
+              <input type="radio" name="your-plan" value="Salús Essencial">
+              <span>Salús Essencial <small>Enfermaria</small></span>
+            </label>
+            <label>
+              <input type="radio" name="your-plan" value="Ainda não sei">
+              <span>Ainda não sei <small>Quero ajuda</small></span>
+            </label>
+          </fieldset>
+
+          <div class="form-separator" aria-hidden="true">
+            <div></div>
+            <span>Seus dados</span>
+            <div></div>
+          </div>
+
+          <div class="field">
+            <label for="your-name">Nome</label>
+            <input type="text" id="your-name" name="your-name" autocomplete="name" placeholder="Como podemos chamar você?" required minlength="3" aria-describedby="your-name-error" aria-invalid="false">
+            <p class="field-error" id="your-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="your-tel">Telefone com WhatsApp</label>
+            <input type="tel" id="your-tel" name="your-tel" autocomplete="tel" inputmode="tel" placeholder="(79) 99999-9999" required minlength="14" aria-describedby="your-tel-error" aria-invalid="false">
+            <p class="field-error" id="your-tel-error"></p>
+          </div>
+
+          <button type="submit" class="proposal-card__submit">
+            Continuar no WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
+          </button>
+          <p class="proposal-card__privacy">Atendimento de segunda a sexta, das 7h às 13h. Usamos seus dados apenas para esta solicitação.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <noscript>
+            <p class="form-status">Para solicitar sem JavaScript, ligue para <a href="tel:+5579988295335">(79) 98829-5335</a>.</p>
+          </noscript>
+        </form>
+      </div>
     </div>
   </section>
 

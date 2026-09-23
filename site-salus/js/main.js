@@ -3,6 +3,13 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Vídeo da hero: parado para quem pede menos movimento ---------- */
+  var heroVideo = document.querySelector(".hero__video");
+  if (heroVideo && reduceMotion) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+  }
+
   /* ---------- Mobile nav ---------- */
   var navToggle = document.querySelector(".nav-toggle");
   var navPrimary = document.getElementById("nav-primary");
@@ -57,7 +64,7 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Profundidade coordenada da hero ---------- */
+  /* ---------- Profundidade coordenada da carteira ---------- */
   var tiltStage = document.querySelector("[data-tilt-stage]");
   var finePointer = window.matchMedia("(pointer: fine)").matches;
 
@@ -71,12 +78,6 @@
     }
 
     tiltStage.addEventListener("pointermove", function (event) {
-      var pointerTarget = event.target;
-      if (pointerTarget instanceof Element && pointerTarget.closest(".proposal-card")) {
-        if (tiltStage.classList.contains("is-tilting")) resetTilt();
-        return;
-      }
-
       cancelAnimationFrame(tiltFrame);
       tiltFrame = requestAnimationFrame(function () {
         var rect = tiltStage.getBoundingClientRect();
@@ -113,15 +114,16 @@
   }
 
   /* ---------- Contadores (anos no hero, prazos de carência) ---------- */
-  function countUp(el, target, suffix) {
+  function countUp(el, target, suffix, duration, onDone) {
     var start = null;
-    var duration = 1200;
+    duration = duration || 1200;
     function tick(timestamp) {
       if (!start) start = timestamp;
       var progress = Math.min((timestamp - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.round(eased * target) + suffix;
       if (progress < 1) requestAnimationFrame(tick);
+      else if (onDone) onDone();
     }
     requestAnimationFrame(tick);
   }
@@ -129,8 +131,20 @@
   var sinceNumber = document.querySelector(".hero__since-number");
   if (sinceNumber) {
     var sinceTarget = parseInt(sinceNumber.getAttribute("data-count-to"), 10) || 0;
-    if (reduceMotion) sinceNumber.textContent = sinceTarget;
-    else countUp(sinceNumber, sinceTarget, "");
+    // O HTML já traz 48 (fallback sem JS); a animação zera e conta quando o número entra na tela.
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      sinceNumber.textContent = "0";
+      var sinceObserver = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        sinceObserver.disconnect();
+        setTimeout(function () {
+          countUp(sinceNumber, sinceTarget, "", 2200, function () {
+            sinceNumber.classList.add("is-counted");
+          });
+        }, 400);
+      }, { threshold: 0.6 });
+      sinceObserver.observe(sinceNumber);
+    }
   }
 
   // "180 dias" -> conta 0..180 e mantém " dias". Sem JS/IO, o texto final fica como está.
