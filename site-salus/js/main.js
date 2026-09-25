@@ -147,6 +147,18 @@
     }
   }
 
+  // iPhone 3D do App Salús: balança devagar de um lado para o outro (±20°).
+  var appModel = document.querySelector(".app-salus__model");
+  if (appModel && !reduceMotion) {
+    var appOrbit = appModel.getAttribute("camera-orbit").split(" ");
+    var appTheta = parseFloat(appOrbit[0]); // ângulo em que a tela fica de frente
+    (function swing(t) {
+      appOrbit[0] = (appTheta + Math.sin(t / 1800) * 20).toFixed(2) + "deg";
+      appModel.setAttribute("camera-orbit", appOrbit.join(" ")); // atributo: funciona antes do model-viewer carregar
+      requestAnimationFrame(swing);
+    })(0);
+  }
+
   // "180 dias" -> conta 0..180 e mantém " dias". Sem JS/IO, o texto final fica como está.
   var periods = document.querySelectorAll(".timeline__period");
   if (periods.length && !reduceMotion && "IntersectionObserver" in window) {
