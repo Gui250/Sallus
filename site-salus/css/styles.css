@@ -20,18 +20,19 @@
 
 :root {
   /* Colors - Salus brand */
-  --salus-beige: #f4f6ea;
+  --salus-beige: #f9fbe6; /* Lima claro 20% sobre branco */
   --ink: #161515;
   --stone: #555151;
   --ash: #c7cbd6;
   --stroke: #dfdfdf;
   --white: #ffffff;
-  --salus-blue: #044993;
-  --salus-blue-dark: #023163;
+  --salus-blue: #0041a0;
+  --salus-blue-dark: #002c6e;
   --pale-blue: #e4edf7;
-  --pale-mint: #e2f4e2;
-  --salus-green: #55c458;
-  --salus-lime: #d6e40d;
+  --lime-light: #e0ed83;
+  --green-light: #e0f0e0; /* Verde 20% sobre branco */
+  --salus-green: #66b263;
+  --salus-lime: #c9d017;
   --error: #a72b2b;
 
   /* Fonts */
@@ -269,7 +270,7 @@ h6 {
 }
 
 .section--ink .eyebrow::before {
-  background: var(--salus-lime);
+  background: var(--salus-green);
 }
 
 .visually-hidden {
@@ -321,12 +322,13 @@ h6 {
 }
 
 .btn--primary {
-  background: var(--salus-blue);
-  color: var(--white);
+  background: var(--salus-green);
+  color: var(--salus-blue-dark);
 }
 
 .btn--primary:hover {
   background: var(--salus-blue-dark);
+  color: var(--white);
 }
 
 .btn:disabled {
@@ -361,7 +363,7 @@ h6 {
   top: 0;
   z-index: 500;
   padding-block: 0.75rem;
-  background: linear-gradient(to bottom, rgba(244, 246, 234, 0.98), rgba(244, 246, 234, 0.78));
+  background: linear-gradient(to bottom, rgba(249, 251, 230, 0.98), rgba(249, 251, 230, 0.78));
   transition: padding var(--duration) var(--ease), background-color var(--duration) var(--ease);
 }
 
@@ -381,10 +383,10 @@ h6 {
   min-height: 4.5rem;
   gap: 1.5rem;
   padding: 0.55rem 0.55rem 0.55rem 1.25rem;
-  border: 1px solid rgba(4, 73, 147, 0.14);
+  border: 1px solid rgba(0, 65, 160, 0.14);
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 0.5rem 1.5rem rgba(2, 49, 99, 0.055);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 44, 110, 0.055);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   isolation: isolate;
@@ -402,8 +404,8 @@ h6 {
 }
 
 .site-header.is-scrolled .navbar {
-  border-color: rgba(4, 73, 147, 0.2);
-  box-shadow: 0 0.75rem 2rem rgba(2, 49, 99, 0.1);
+  border-color: rgba(0, 65, 160, 0.2);
+  box-shadow: 0 0.75rem 2rem rgba(0, 44, 110, 0.1);
 }
 
 .navbar-brand {
@@ -452,7 +454,7 @@ h6 {
   gap: 0.65rem;
   min-height: 2.75rem;
   padding-inline: 0.9rem;
-  border: 1px solid rgba(4, 73, 147, 0.18);
+  border: 1px solid rgba(0, 65, 160, 0.18);
   border-radius: 0.75rem;
   color: var(--salus-blue-dark);
   background: var(--pale-blue);
@@ -635,10 +637,10 @@ h6 {
     align-items: stretch;
     gap: 1rem;
     padding: 0.75rem;
-    border: 1px solid rgba(4, 73, 147, 0.16);
+    border: 1px solid rgba(0, 65, 160, 0.16);
     border-radius: 1.15rem;
     background: var(--white);
-    box-shadow: 0 1.25rem 3rem rgba(2, 49, 99, 0.18);
+    box-shadow: 0 1.25rem 3rem rgba(0, 44, 110, 0.18);
     transform: translateY(-0.5rem) scale(0.985);
     transform-origin: top;
     opacity: 0;
@@ -663,7 +665,7 @@ h6 {
   }
 
   .nav-links li + li {
-    border-top: 1px solid rgba(4, 73, 147, 0.1);
+    border-top: 1px solid rgba(0, 65, 160, 0.1);
   }
 
   .nav-links a {
@@ -838,8 +840,8 @@ h6 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(2, 49, 99, 0.88) 0%, rgba(2, 49, 99, 0.62) 42%, rgba(2, 49, 99, 0.08) 75%),
-    linear-gradient(0deg, rgba(2, 49, 99, 0.45), transparent 35%);
+    linear-gradient(90deg, rgba(0, 44, 110, 0.88) 0%, rgba(0, 44, 110, 0.62) 42%, rgba(0, 44, 110, 0.08) 75%),
+    linear-gradient(0deg, rgba(0, 44, 110, 0.45), transparent 35%);
 }
 
 .hero__video {
@@ -855,10 +857,13 @@ h6 {
 }
 
 .hero .eyebrow::before {
-  background: var(--salus-lime);
+  background: var(--salus-green);
 }
 
-.hero__content h1 em,
+.hero__content h1 em {
+  color: var(--salus-green);
+}
+
 .hero__since-number {
   color: var(--salus-lime);
 }
@@ -1035,7 +1040,7 @@ h6 {
   border-radius: 1rem;
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 -0.25rem 0.95rem rgba(2, 49, 99, 0.1);
+    0 -0.25rem 0.95rem rgba(0, 44, 110, 0.1);
   backface-visibility: hidden;
   transition:
     transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -1125,7 +1130,7 @@ h6 {
   animation-delay: 100ms;
   color: #10300f;
   border-color: rgba(16, 48, 15, 0.18);
-  background: linear-gradient(145deg, #8ad98b, var(--salus-green));
+  background: linear-gradient(145deg, #97cb94, var(--salus-green));
 }
 
 .benefit-card--essential {
@@ -1142,7 +1147,7 @@ h6 {
   z-index: 40;
   width: 17.5rem;
   height: 10rem;
-  filter: drop-shadow(0 1rem 1.75rem rgba(2, 49, 99, 0.28));
+  filter: drop-shadow(0 1rem 1.75rem rgba(0, 44, 110, 0.28));
 }
 
 .benefit-wallet__pocket-shape {
@@ -1156,7 +1161,7 @@ h6 {
 
 .benefit-wallet__pocket-stitch {
   fill: none;
-  stroke: rgba(214, 228, 13, 0.5);
+  stroke: rgba(102, 178, 99, 0.5);
 }
 
 .benefit-wallet__content {
@@ -1227,7 +1232,7 @@ h6 {
   z-index: 100;
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 1.2rem 2.5rem rgba(2, 49, 99, 0.22);
+    0 1.2rem 2.5rem rgba(0, 44, 110, 0.22);
 }
 
 .benefit-wallet:hover .benefit-card--plus:hover {
@@ -1492,7 +1497,7 @@ h6 {
   margin-top: 0.5rem;
   min-height: 3rem;
   background: var(--salus-green);
-  color: var(--ink);
+  color: var(--salus-blue-dark);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.02em;
@@ -1567,6 +1572,62 @@ h6 {
   color: var(--salus-blue);
 }
 
+/* Lima em vez de verde: contraste AA (~5.7:1) sobre o azul em texto corrido */
+.section--ink .statement {
+  color: var(--white);
+}
+
+.section--ink .statement em {
+  color: var(--salus-lime);
+}
+
+/* Logo ASSEC à esquerda do statement; placa branca porque o logo é azul sobre claro */
+.sobre__grid {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: 68rem;
+}
+
+.sobre__logo {
+  flex: none;
+  width: clamp(11rem, 22vw, 16rem);
+  height: auto;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-card);
+  background: var(--white);
+}
+
+.sobre__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 46rem;
+}
+
+/* Texto institucional é mais longo que o statement original: corpo menor */
+.sobre__grid .statement {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  line-height: 1.55;
+}
+
+.sobre__reg {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .sobre__grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ---------- App Salús (iPhone 3D) ---------- */
 .app-salus__grid {
   display: flex;
@@ -1634,7 +1695,7 @@ h6 {
   width: 72%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(85, 196, 88, 0.35), rgba(4, 73, 147, 0.18) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(102, 178, 99, 0.35), rgba(0, 65, 160, 0.18) 45%, transparent 70%);
   filter: blur(8px);
   animation: app-halo 6s ease-in-out infinite;
 }
@@ -1684,7 +1745,7 @@ h6 {
 }
 
 .pastel-card:nth-child(even) {
-  background: var(--pale-mint);
+  background: var(--green-light);
 }
 
 .pastel-card__icon {
@@ -1812,8 +1873,8 @@ h6 {
 }
 
 .publico-card--salus .publico-card__tag {
-  background: var(--pale-mint);
-  color: #3f6e0f;
+  background: var(--green-light);
+  color: #2c5a2a;
 }
 
 .publico-card ul {
@@ -2192,7 +2253,7 @@ h6 {
 }
 
 .footer-col a:hover {
-  color: var(--salus-lime);
+  color: var(--salus-green);
 }
 
 .footer-bottom {
@@ -2257,7 +2318,7 @@ h6 {
 }
 
 .rede h2 em {
-  color: var(--salus-lime);
+  color: var(--salus-green);
   font-style: italic;
 }
 
@@ -2298,7 +2359,7 @@ h6 {
 }
 
 .rede .btn--light {
-  background: var(--salus-lime);
+  background: var(--salus-green);
   color: var(--ink);
 }
 
@@ -2354,7 +2415,7 @@ h6 {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--salus-lime);
+  background: var(--salus-green);
 }
 
 .rede__row--mono li {
@@ -2482,7 +2543,7 @@ h6 {
   }
 
   .hero__media::after {
-    background: linear-gradient(0deg, rgba(2, 49, 99, 0.92) 30%, rgba(2, 49, 99, 0.45));
+    background: linear-gradient(0deg, rgba(0, 44, 110, 0.92) 30%, rgba(0, 44, 110, 0.45));
   }
 
   .contact-form .proposal-card {
